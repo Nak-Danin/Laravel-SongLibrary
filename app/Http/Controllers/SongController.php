@@ -9,7 +9,7 @@ class SongController extends Controller
 {
     public function index()
     {
-        $songs = Song::where('is_active', true)->get();
+        $songs = Song::active()->get();
         return view('songs.index', [
             'songs' => $songs
         ]);
@@ -17,8 +17,12 @@ class SongController extends Controller
 
     public function show(Song $song)
     {
+        $relatedSongs = Song::active()->where('artist', $song->artist)
+            ->where('song_id', '!=', $song->song_id)
+            ->limit(5)->get();
         return view('songs.show', [
-            'song' => $song
+            'song' => $song,
+            'relatedSongs' => $relatedSongs
         ]);
     }
 
@@ -35,10 +39,10 @@ class SongController extends Controller
             'artist' => ['required'],
             'duration' => ['required'],
             'description' => ['nullable', 'string', 'max:1000'],
-            'published_date' => ['date'],
+            'published_date' => ['required', 'date'],
             'image' => 'image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
-        $imagePath = null;
+        $imagePath = "songs/empty-image.jpg";
 
         if (request()->hasFile('img')) {
             $imagePath = request()->file('img')->store('songs', 'public');
@@ -73,7 +77,7 @@ class SongController extends Controller
             'artist' => ['required'],
             'duration' => ['required'],
             'description' => ['nullable', 'string', 'max:1000'],
-            'published_date' => ['date'],
+            'published_date' => ['required', 'date'],
             'image' => 'image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 

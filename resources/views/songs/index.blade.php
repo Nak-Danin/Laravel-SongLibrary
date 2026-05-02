@@ -41,18 +41,18 @@
             <table class="w-full text-sm" id="songsTable">
                 <thead>
                     <tr class="bg-slate-50/80 text-slate-500 text-xs font-display font-semibold uppercase tracking-wider border-b border-gray-100">
-                        <th class="px-6 py-3.5 text-left">#</th>
+                        <th class="px-6 py-3.5 text-left hidden md:table-cell">#</th>
                         <th class="px-6 py-3.5 text-left">Title</th>
-                        <th class="px-6 py-3.5 text-left">Artist</th>
-                        <th class="px-6 py-3.5 text-left">Genre</th>
-                        <th class="px-6 py-3.5 text-left">Duration</th>
+                        <th class="px-6 py-3.5 text-left hidden md:table-cell">Artist</th>
+                        <th class="px-6 py-3.5 text-left hidden md:table-cell">Genre</th>
+                        <th class="px-6 py-3.5 text-left hidden md:table-cell">Duration</th>
                         <th class="px-6 py-3.5 text-left">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-50">
                     @foreach($songs as $song)
                     <tr class="table-row-hover song-row">
-                        <td class="px-6 py-4 text-slate-400 font-mono text-xs">{{ $loop->iteration }}</td>
+                        <td class="px-6 py-4 text-slate-400 font-mono text-xs hidden md:table-cell">{{ $loop->iteration }}</td>
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-3">
                                 <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
@@ -61,15 +61,15 @@
                                 <span class="font-medium text-slate-800">{{ $song->title }}</span>
                             </div>
                         </td>
-                        <td class="px-6 py-4 text-slate-600">{{ $song->artist }}</td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 text-slate-600 hidden md:table-cell">{{ $song->artist }}</td>
+                        <td class="px-6 py-4 hidden md:table-cell">
                             @if($song->genre)
                             <span class="badge text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600">{{ $song->genre }}</span>
                             @else
                             <span class="text-slate-300">—</span>
                             @endif
                         </td>
-                        <td class="px-6 py-4 text-slate-500">{{ gmdate('i:s', $song->duration) ?? '—' }}</td>
+                        <td class="px-6 py-4 text-slate-500 hidden md:table-cell">{{ $song->formatted_duration }}</td>
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-1.5">
                                 <a href="/songs/{{ $song->song_id }}"

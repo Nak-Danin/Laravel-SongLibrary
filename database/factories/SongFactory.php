@@ -42,7 +42,17 @@ class SongFactory extends Factory
                 'Luna Scott',
                 'Kai Morgan'
             ]),
-            'genre' => fake()->randomElement(['Romance', 'Hip Hop', 'Kpop', 'Slowed', 'Jazz', 'Blue']),
+            'genre' => fake()->randomElement([
+                'Romance',
+                'Hip-Hop',
+                'Pop',
+                'Slowed',
+                'Jazz',
+                'Blues',
+                'Classical',
+                'Country',
+                'Electronic'
+            ]),
             'duration' => fake()->numberBetween(180, 300),
             'description' => fake()->randomElement([
                 'A heartfelt song about love, distance, and memories that never fade.',
@@ -53,7 +63,7 @@ class SongFactory extends Factory
             'is_active' => true,
             'is_favorite' => false,
             'published_date' => fake()->date(),
-            'img_path' => 'images/default_song_image'
+            'img_path' => 'songs/default_song_image.png'
         ];
     }
 }

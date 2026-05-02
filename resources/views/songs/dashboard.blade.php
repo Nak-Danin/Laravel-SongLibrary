@@ -78,20 +78,20 @@
             <table class="w-full text-sm">
                 <thead>
                     <tr class="bg-slate-50/70 text-slate-500 text-xs font-display font-semibold uppercase tracking-wider">
-                        <th class="px-6 py-3 text-left">#</th>
+                        <th class="px-6 py-3 text-left hidden md:table-cell">#</th>
                         <th class="px-6 py-3 text-left">Title</th>
-                        <th class="px-6 py-3 text-left">Artist</th>
-                        <th class="px-6 py-3 text-left">Genre</th>
-                        <th class="px-6 py-3 text-left">Published</th>
-                        <th class="px-6 py-3 text-left">Added</th>
-                        <th class="px-6 py-3 text-left">Updated</th>
+                        <th class="px-6 py-3 text-left hidden md:table-cell">Artist</th>
+                        <th class="px-6 py-3 text-left hidden md:table-cell">Genre</th>
+                        <th class="px-6 py-3 text-left hidden md:table-cell">Published</th>
+                        <th class="px-6 py-3 text-left hidden md:table-cell">Added</th>
+                        <th class="px-6 py-3 text-left hidden md:table-cell">Updated</th>
                         <th class="px-6 py-3 text-left">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-50">
                     @foreach($songs as $song)
                     <tr class="table-row-hover">
-                        <td class="px-6 py-4 text-slate-400 font-mono text-xs">{{ $loop->iteration }}</td>
+                        <td class="px-6 py-4 text-slate-400 font-mono text-xs hidden md:table-cell">{{ $loop->iteration }}</td>
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-3">
                                 <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
@@ -100,17 +100,17 @@
                                 <span class="font-medium text-slate-800">{{ $song->title }}</span>
                             </div>
                         </td>
-                        <td class="px-6 py-4 text-slate-600">{{ $song->artist }}</td>
-                        <td class="px-6 py-4 ">
+                        <td class="px-6 py-4 text-slate-600 hidden md:table-cell">{{ $song->artist }}</td>
+                        <td class="px-6 py-4 hidden md:table-cell">
                             @if($song->genre)
                             <span class="badge text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600">{{ $song->genre }}</span>
                             @else
                             <span class="text-slate-400">—</span>
                             @endif
                         </td>
-                        <td class="px-6 py-4 text-slate-400 text-xs">{{ $song->published_date->format('d M Y') }}</td>
-                        <td class="px-6 py-4 text-slate-400 text-xs">{{ $song->created_at->format('d M Y') }}</td>
-                        <td class="px-6 py-4 text-slate-500">{{ $song->updated_at->format('d M Y') ?? '—' }}</td>
+                        <td class="px-6 py-4 text-slate-400 text-xs hidden md:table-cell">{{ $song->published_date->format('d M Y') }}</td>
+                        <td class="px-6 py-4 text-slate-400 text-xs hidden md:table-cell">{{ $song->created_at->format('d M Y') }}</td>
+                        <td class="px-6 py-4 text-slate-500 hidden md:table-cell">{{ $song->updated_at->format('d M Y') ?? '—' }}</td>
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-2">
                                 <a href="/songs/{{ $song->song_id }}"

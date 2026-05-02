@@ -8,6 +8,7 @@
     @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         * {
             font-family: 'DM Sans', sans-serif;
@@ -117,70 +118,99 @@
 </head>
 
 <body>
-    <nav class="relative bg-gray-800">
+    <nav x-data="{ open: false }" class="sticky top-0 z-50 md:static md:top-auto md:z-auto bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
-                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                    <!-- Mobile menu button-->
-                    <button type="button" command="--toggle" commandfor="mobile-menu" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500">
-                        <span class="absolute -inset-0.5"></span>
-                        <span class="sr-only">Open main menu</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-                            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-                            <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="flex items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="flex shrink-0 items-center">
-                        <img src="{{ asset('images/logoSong.png') }}" alt="Your Company" class="h-15 w-auto" />
+
+                <!-- Mobile menu button -->
+                <button @click="open = !open"
+                    class="sm:hidden p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-md">
+
+                    <span class="sr-only">Toggle menu</span>
+
+                    <!-- Hamburger -->
+                    <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" />
+                    </svg>
+
+                    <!-- X -->
+                    <svg x-show="open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" />
+                    </svg>
+                </button>
+
+                <div class="flex justify-center md:justify-start">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <img src="{{ asset('images/logoSong.png') }}" class="h-10 w-auto" />
                     </div>
-                    <div class="hidden sm:ml-6 sm:block md:flex items-center text-md ">
-                        <div class="flex space-x-4">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-                            <x-nav-link href="/" :active="request()->is('/')" aria-current="page" class="rounded-md bg-gray-900 px-3 py-2 font-medium text-white">Dashboard</x-nav-link>
-                            <x-nav-link href="/songs" :active="request()->is('songs')" class="rounded-md px-3 py-2 font-medium text-gray-300 hover:bg-white/5 hover:text-white">Library</x-nav-link>
-                            <x-nav-link href="/favorites" :active="request()->is('favorites')" class="rounded-md px-3 py-2 font-medium text-gray-300 hover:bg-white/5 hover:text-white">Favorites</x-nav-link>
-                        </div>
+
+                    <!-- Desktop menu -->
+                    <div class="hidden sm:flex space-x-4">
+                        <x-nav-link href="/" :active="request()->is('/')" class="px-3 py-2 text-white rounded-md bg-gray-900">
+                            Dashboard
+                        </x-nav-link>
+
+                        <x-nav-link href="/songs" :active="request()->is('songs')" class="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-md">
+                            Library
+                        </x-nav-link>
+
+                        <x-nav-link href="/favorites" :active="request()->is('favorites')" class="px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-md">
+                            Favorites
+                        </x-nav-link>
                     </div>
+
                 </div>
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <button type="button" class="relative rounded-full p-1 text-gray-400 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
-                        <span class="absolute -inset-1.5"></span>
-                        <span class="sr-only">View notifications</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-                            <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                <!-- Right side -->
+                <div class="flex items-center gap-3">
+
+                    <!-- Notifications -->
+                    <button class="text-gray-400 hover:text-white">
+                        🔔
                     </button>
 
-                    <!-- Profile dropdown -->
-                    <el-dropdown class="relative ml-3">
-                        <button class="relative flex rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-                            <span class="absolute -inset-1.5"></span>
-                            <span class="sr-only">Open user menu</span>
-                            <img src="{{ asset('images/profile.png') }}" alt="" class="object-cover size-8 rounded-full bg-gray-800 outline -outline-offset-1 outline-white/10" />
-                        </button>
-
-                        <el-menu anchor="bottom end" popover class="w-48 origin-top-right rounded-md bg-white py-1 shadow-lg outline outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
-                            <x-nav-link href="/" :active="request()->is('/')" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Your profile</x-nav-link>
-                            <x-nav-link href="/songs" :active="request()->is('/songs')" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Settings</x-nav-link>
-                            <x-nav-link href="/favorites" :active="request()->is('/favorites')" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Sign out</x-nav-link>
-                        </el-menu>
-                    </el-dropdown>
+                    <!-- Profile -->
+                    <img src="{{ asset('images/profile.png') }}"
+                        class="w-8 h-8 rounded-full object-cover border border-white/10">
                 </div>
             </div>
         </div>
 
-        <el-disclosure id="mobile-menu" hidden class="block sm:hidden">
-            <div class="space-y-1 px-2 pt-2 pb-3">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-                <x-nav-link href="/" aria-current="page" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">Dashboard</x-nav-link>
-                <x-nav-link href="songs" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Library</x-nav-link>
-                <x-nav-link href="favorites" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Favorites</x-nav-link>
+        <!-- Overlay background -->
+        <div
+            x-show="open"
+            x-transition.opacity
+            class="fixed inset-0 bg-black/40 z-40 sm:hidden"
+            @click="open = false">
+        </div>
+
+        <!-- Slide-in menu -->
+        <div
+            x-show="open"
+            x-transition:enter="transition transform duration-300 ease-out"
+            x-transition:enter-start="-translate-y-10 opacity-0"
+            x-transition:enter-end="translate-y-0 opacity-100"
+            x-transition:leave="transition transform duration-200 ease-in"
+            x-transition:leave-start="translate-y-0 opacity-100"
+            x-transition:leave-end="-translate-y-10 opacity-0"
+            class="fixed top-16 left-0 right-0 z-50 sm:hidden bg-gray-800 shadow-lg">
+
+            <div class="px-4 py-3 space-y-2">
+
+                <x-nav-link href="/" :active="request()->is('/')" class="block px-3 py-2 text-white rounded-md hover:bg-white/5">
+                    Dashboard
+                </x-nav-link>
+
+                <x-nav-link href="/songs" :active="request()->is('songs')" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-md">
+                    Library
+                </x-nav-link>
+
+                <x-nav-link href="/favorites" :active="request()->is('favorites')" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-md">
+                    Favorites
+                </x-nav-link>
+
             </div>
-        </el-disclosure>
+        </div>
     </nav>
     {{ $slot }}
 </body>
