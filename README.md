@@ -133,6 +133,8 @@ Update your .env file with your MySQL credentials.
 php artisan migrate
 6. Start the server
 php artisan serve
+
+
 📈 Future Improvements
 🔐 Authentication (user-based libraries)
 🎵 Upload song images/audio
@@ -157,18 +159,19 @@ UI structuring
 </p>
 
 <p align="center">
-  <strong>Library (CRUD)</strong><br>
+  <strong align="center">Library (CRUD)</strong><br>
   <img src="./public/images/Library.png" width="800" alt="Library">
-  <p>Create Page</p>
+  <strong align="center">Create Page</strong>
   <img src="./public/images/create.png" width="800" alt="create">
-  <p>View Page</p>
+  <strong align="center">View Page</strong>
   <img src="./public/images/view.png" width="800" alt="view">
-  <p>Update Page</p>
+  <strong align="center">Update Page</strong>
   <img src="./public/images/update.png" width="800" alt="update">
 </p>
 
 <p align="center">
-  <strong>Favorites (Search & Sort)</strong><br>
+  <strong align="center">Favorites (Search & Sort)</strong><br>
   <img src="./public/images/favorite-grid.png" width="800" alt="Favorites-grid">
+  <br>
   <img src="./public/images/favorite-list.png" width="800" alt="Favorites-list">
 </p>
