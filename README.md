@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song Library - Laravel Project</title>
-</head>
-<body>
-
     <h1>🎵 Song Library - Laravel Project</h1>
 
     <p>
@@ -133,20 +124,22 @@
         </li>
         <li>Install dependencies:
             <pre><code>composer install
+
 npm install && npm run dev</code></pre>
-        </li>
-        <li>Setup environment:
-            <pre><code>cp .env.example .env
+
+</li>
+<li>Setup environment:
+<pre><code>cp .env.example .env
 php artisan key:generate</code></pre>
-        </li>
-        <li>Configure your database in <code>.env</code></li>
-        <li>Run migrations:
-            <pre><code>php artisan migrate</code></pre>
-        </li>
-        <li>Start the server:
-            <pre><code>php artisan serve</code></pre>
-        </li>
-    </ol>
+</li>
+<li>Configure your database in <code>.env</code></li>
+<li>Run migrations:
+<pre><code>php artisan migrate</code></pre>
+</li>
+<li>Start the server:
+<pre><code>php artisan serve</code></pre>
+</li>
+</ol>
 
     <hr>
 
@@ -162,6 +155,3 @@ php artisan key:generate</code></pre>
 
     <h2>👨‍💻 Author</h2>
     <p>Developed as a learning project to practice Laravel CRUD, routing, and UI structuring.</p>
-
-</body>
-</html>
