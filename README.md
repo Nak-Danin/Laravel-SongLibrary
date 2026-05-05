@@ -1,157 +1,174 @@
-    <h1>🎵 Song Library - Laravel Project</h1>
+# 🎵 Song Library
 
-    <p>
-        A simple yet functional <strong>Song Library web application</strong> built with Laravel.
-        This project focuses on organizing songs by category, managing a full library with CRUD operations,
-        and providing a smooth user experience with filtering, searching, and sorting features.
-    </p>
+<p align="center">
+  A clean and functional <strong>Laravel Song Library</strong> for managing, exploring, and organizing music.
+</p>
 
-    <hr>
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-Framework-red?style=for-the-badge&logo=laravel">
+  <img src="https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql">
+  <img src="https://img.shields.io/badge/TailwindCSS-Styling-38B2AC?style=for-the-badge&logo=tailwindcss">
+  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
+</p>
 
-    <h2>📌 Features</h2>
+---
 
-    <h3>🏠 Dashboard</h3>
-    <ul>
-        <li>Displays songs <strong>grouped by category (genre)</strong></li>
-        <li>Provides a quick overview of your music collection</li>
-    </ul>
+## 📌 Overview
 
-    <h3>🎧 Library</h3>
-    <ul>
-        <li>Displays <strong>all songs</strong></li>
-        <li>Full CRUD functionality:
-            <ul>
-                <li>➕ Create new songs</li>
-                <li>👁️ View song details</li>
-                <li>✏️ Update existing songs</li>
-                <li>❌ Delete songs <em>(logical delete using <code>is_active</code>)</em></li>
-            </ul>
-        </li>
-        <li>View page includes:
-            <ul>
-                <li>🔗 Link to <strong>songs by the same artist</strong></li>
-            </ul>
-        </li>
-    </ul>
+**Song Library** is a Laravel-based web application designed to:
 
-    <h3>⭐ Favorites</h3>
-    <ul>
-        <li>Displays songs marked as <strong>favorite</strong></li>
-        <li>Songs are grouped by <strong>category (genre)</strong></li>
-        <li>Filtered via <strong>route-based genre</strong></li>
-        <li>Includes:
-            <ul>
-                <li>🔍 Search functionality</li>
-                <li>🔃 Sorting options:
-                    <ul>
-                        <li>Title</li>
-                        <li>Artist</li>
-                        <li>Published Date</li>
-                        <li>Recently Added</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
+- Organize songs by genre
+- Manage a full library with CRUD operations
+- Provide filtering, searching, and sorting features
+- Deliver a smooth and intuitive UI experience
 
-    <hr>
+---
 
-    <h2>🧩 Components Used</h2>
-    <ul>
-        <li><code>x-layout</code> – Main layout wrapper</li>
-        <li><code>x-slot</code> – Dynamic content injection</li>
-        <li><code>x-nav-link</code> – Navigation links</li>
-        <li><code>x-genre</code> – Genre display and filtering UI</li>
-    </ul>
+## ✨ Features
 
-    <hr>
+### 🏠 Dashboard
 
-    <h2>🗄️ Database</h2>
-    <p><strong>Database:</strong> MySQL</p>
+- Songs grouped by **category (genre)**
+- Quick overview of your music collection
 
-    <h3>📄 Song Table Structure</h3>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>song_id</td><td>Primary key</td></tr>
-            <tr><td>title</td><td>Song title</td></tr>
-            <tr><td>artist</td><td>Artist name</td></tr>
-            <tr><td>genre</td><td>Song genre/category</td></tr>
-            <tr><td>published_date</td><td>Release date</td></tr>
-            <tr><td>is_active</td><td>Logical deletion flag</td></tr>
-            <tr><td>is_favorite</td><td>Favorite status</td></tr>
-            <tr><td>created_at</td><td>Record creation time</td></tr>
-            <tr><td>updated_at</td><td>Last update time</td></tr>
-        </tbody>
-    </table>
+---
 
-    <hr>
+### 🎧 Library
 
-    <h2>🎨 UI & Navigation</h2>
-    <ul>
-        <li>Clean and intuitive <strong>user interface</strong></li>
-        <li>Smooth navigation between:
-            <ul>
-                <li>Dashboard</li>
-                <li>Library</li>
-                <li>Favorites</li>
-            </ul>
-        </li>
-        <li>Responsive design for better usability</li>
-    </ul>
+- Display **all songs**
+- Full CRUD functionality:
+    - ➕ Create songs
+    - 👁️ View details
+    - ✏️ Update songs
+    - ❌ Delete (logical delete using `is_active`)
+- View page includes:
+    - 🔗 Songs from the **same artist**
 
-    <hr>
+---
 
-    <h2>⚙️ Tech Stack</h2>
-    <ul>
-        <li><strong>Backend:</strong> Laravel</li>
-        <li><strong>Frontend:</strong> Blade + Tailwind CSS</li>
-        <li><strong>Database:</strong> MySQL</li>
-    </ul>
+### ⭐ Favorites
 
-    <hr>
+- Songs marked as **favorite**
+- Grouped by **genre**
+- Filtered via **route-based genre**
+- Includes:
+    - 🔍 Search functionality
+    - 🔃 Sorting:
+        - Title
+        - Artist
+        - Published Date
+        - Recently Added
 
-    <h2>🚀 Getting Started</h2>
+---
 
-    <ol>
-        <li>Clone the repository:
-            <pre><code>git clone &lt;your-repo-url&gt;</code></pre>
-        </li>
-        <li>Install dependencies:
-            <pre><code>composer install
+## 🧩 Components
 
-npm install && npm run dev</code></pre>
+Reusable Blade components used in the project:
 
-</li>
-<li>Setup environment:
-<pre><code>cp .env.example .env
-php artisan key:generate</code></pre>
-</li>
-<li>Configure your database in <code>.env</code></li>
-<li>Run migrations:
-<pre><code>php artisan migrate</code></pre>
-</li>
-<li>Start the server:
-<pre><code>php artisan serve</code></pre>
-</li>
-</ol>
+- `x-layout` → Main layout
+- `x-slot` → Dynamic content injection
+- `x-nav-link` → Navigation links
+- `x-genre` → Genre UI & filtering
 
-    <hr>
+---
 
-    <h2>📈 Future Improvements</h2>
-    <ul>
-        <li>Add authentication (user-based libraries)</li>
-        <li>Upload and manage song images/audio files</li>
-        <li>API support for mobile integration</li>
-        <li>Playlist feature</li>
-    </ul>
+## 🗄️ Database
 
-    <hr>
+**Database:** MySQL  
+**Table:** `songs`
 
-    <h2>👨‍💻 Author</h2>
-    <p>Developed as a learning project to practice Laravel CRUD, routing, and UI structuring.</p>
+| Field          | Description         |
+| -------------- | ------------------- |
+| song_id        | Primary key         |
+| title          | Song title          |
+| artist         | Artist name         |
+| genre          | Song category       |
+| published_date | Release date        |
+| is_active      | Logical delete flag |
+| is_favorite    | Favorite status     |
+| created_at     | Created timestamp   |
+| updated_at     | Updated timestamp   |
+
+---
+
+## 🎨 UI & Navigation
+
+- Clean and modern interface
+- Smooth navigation between:
+    - Dashboard
+    - Library
+    - Favorites
+- Responsive design for better usability
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer    | Technology           |
+| -------- | -------------------- |
+| Backend  | Laravel              |
+| Frontend | Blade + Tailwind CSS |
+| Database | MySQL                |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+````bash
+git clone <your-repo-url>
+cd song-library
+2. Install dependencies
+composer install
+npm install && npm run dev
+3. Setup environment
+cp .env.example .env
+php artisan key:generate
+4. Configure database
+
+Update your .env file with your MySQL credentials.
+
+5. Run migrations
+php artisan migrate
+6. Start the server
+php artisan serve
+📈 Future Improvements
+🔐 Authentication (user-based libraries)
+🎵 Upload song images/audio
+📱 API for mobile integration
+📂 Playlist system
+👨‍💻 Author
+
+Developed as a learning project to practice:
+
+Laravel CRUD operations
+Routing & Controllers
+Blade components
+UI structuring
+<p align="center"> ⭐ If you found this useful, consider starring the repo! </p> ```
+````
+
+<h2 align="center">📸 Preview</h2>
+
+<p align="center">
+  <strong>Dashboard</strong><br>
+  <img src="{{ asset('images/dashboard.png') }}" width="800" alt="Dashboard">
+</p>
+
+<p align="center">
+  <strong>Library (CRUD)</strong><br>
+  <img src="{{ asset('images/Library.png') }}" width="800" alt="Library">
+  <p>Create Page</p>
+  <img src="{{ asset('images/create.png') }}" width="800" alt="create">
+  <p>View Page</p>
+  <img src="{{ asset('images/view.png') }}" width="800" alt="view">
+  <p>Update Page</p>
+  <img src="{{ asset('images/update.png') }}" width="800" alt="update">
+</p>
+
+<p align="center">
+  <strong>Favorites (Search & Sort)</strong><br>
+  <img src="{{ asset('images/favorite-grid.png') }}" width="800" alt="Favorites-grid">
+  <img src="{{ asset('images/favorite-list.png') }}" width="800" alt="Favorites-list">
+</p>
