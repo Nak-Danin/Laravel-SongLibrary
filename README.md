@@ -153,22 +153,22 @@ UI structuring
 
 <p align="center">
   <strong>Dashboard</strong><br>
-  <img src="{{ asset('images/dashboard.png') }}" width="800" alt="Dashboard">
+  <img src="./public/images/dashboard.png" width="800" alt="Dashboard">
 </p>
 
 <p align="center">
   <strong>Library (CRUD)</strong><br>
-  <img src="{{ asset('images/Library.png') }}" width="800" alt="Library">
+  <img src="./public/images/Library.png" width="800" alt="Library">
   <p>Create Page</p>
-  <img src="{{ asset('images/create.png') }}" width="800" alt="create">
+  <img src="./public/images/create.png" width="800" alt="create">
   <p>View Page</p>
-  <img src="{{ asset('images/view.png') }}" width="800" alt="view">
+  <img src="./public/images/view.png" width="800" alt="view">
   <p>Update Page</p>
-  <img src="{{ asset('images/update.png') }}" width="800" alt="update">
+  <img src="./public/images/update.png" width="800" alt="update">
 </p>
 
 <p align="center">
   <strong>Favorites (Search & Sort)</strong><br>
-  <img src="{{ asset('images/favorite-grid.png') }}" width="800" alt="Favorites-grid">
-  <img src="{{ asset('images/favorite-list.png') }}" width="800" alt="Favorites-list">
+  <img src="./public/images/favorite-grid.png" width="800" alt="Favorites-grid">
+  <img src="./public/images/favorite-list.png" width="800" alt="Favorites-list">
 </p>
