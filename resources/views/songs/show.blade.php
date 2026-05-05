@@ -231,26 +231,42 @@
                 </div>
 
                 {{-- Stats row --}}
-                <div class="flex items-center flex-wrap gap-0 fade-up-4">
-                    @if($song->year)
-                    <div class="pr-6 stat-block">
-                        <p class="text-xs text-slate-500 uppercase tracking-widest font-display font-semibold mb-0.5">Year</p>
-                        <p class="text-white font-display font-bold text-lg">{{ $song->year }}</p>
-                    </div>
-                    @endif
+                <section class="flex flex-col gap-5">
+                    <form method="POST" action="/songs/{{ $song->song_id }}/addToFavorite">
+                        @csrf
+                        @method('PATCH')
+                        @if($song->is_favorite)
+                        <button class="ms-5 cursor-pointer action-btn action-btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-xl">
+                            <i class="fa-solid fa-star" style="color: yellow;"></i>
+                            Added to favorite
+                        </button>
+                        @else
+                        <button class="ms-5 cursor-pointer action-btn action-btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-xl" type="submit">
+                            <i class="fa-solid fa-star" style="color: rgb(30, 48, 80);"></i> Add to favorite
+                        </button>
+                        @endif
+                    </form>
+                    <div class="flex items-center flex-wrap gap-0 fade-up-4">
+                        @if($song->year)
+                        <div class="pr-6 stat-block">
+                            <p class="text-xs text-slate-500 uppercase tracking-widest font-display font-semibold mb-0.5">Year</p>
+                            <p class="text-white font-display font-bold text-lg">{{ $song->year }}</p>
+                        </div>
+                        @endif
 
-                    @if($song->duration)
-                    <div class="px-6 stat-block">
-                        <p class="text-xs text-slate-500 uppercase tracking-widest font-display font-semibold mb-0.5">Duration</p>
-                        <p class="text-white font-display font-bold text-lg">{{ gmdate('i:s', $song->duration)  }}</p>
-                    </div>
-                    @endif
+                        @if($song->duration)
+                        <div class="px-6 stat-block">
+                            <p class="text-xs text-slate-500 uppercase tracking-widest font-display font-semibold mb-0.5">Duration</p>
+                            <p class="text-white font-display font-bold text-lg">{{ gmdate('i:s', $song->duration)  }}</p>
+                        </div>
+                        @endif
 
-                    <div class="{{ ($song->year || $song->duration) ? 'px-6' : 'pr-6' }} stat-block">
-                        <p class="text-xs text-slate-500 uppercase tracking-widest font-display font-semibold mb-0.5">Added</p>
-                        <p class="text-white font-display font-bold text-lg">{{ $song->created_at->format('d M Y') }}</p>
+                        <div class="{{ ($song->year || $song->duration) ? 'px-6' : 'pr-6' }} stat-block">
+                            <p class="text-xs text-slate-500 uppercase tracking-widest font-display font-semibold mb-0.5">Added</p>
+                            <p class="text-white font-display font-bold text-lg">{{ $song->created_at->format('d M Y') }}</p>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
 
             {{-- Action Buttons (desktop) --}}

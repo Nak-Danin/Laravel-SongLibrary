@@ -26,4 +26,9 @@ class Song extends Model
     {
         return $query->where('is_active', true);
     }
+
+    public function scopeFavorite($query)
+    {
+        return $query->where('is_favorite', true);
+    }
 }
