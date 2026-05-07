@@ -205,12 +205,12 @@
             <div class="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-12">
 
                 {{-- Album Art --}}
-                <div class="album-art w-44 h-44 md:w-52 md:h-52 rounded-2xl flex items-center justify-center relative shrink-0 fade-up-1 border border-gray-500">
+                <div class="album-art w-full h-44 md:w-52 md:h-52 rounded-2xl flex items-center justify-center relative shrink-0 fade-up-1 border border-gray-500">
                     <!-- Vinyl rings decoration -->
                     <div class="vinyl-ring" style="width:130%;height:130%;top:-15%;left:-15%;"></div>
                     <div class="vinyl-ring" style="width:160%;height:160%;top:-30%;left:-30%;"></div>
                     <div class="vinyl-ring" style="width:190%;height:190%;top:-45%;left:-45%;"></div>
-                    <img class="relative z-10 object-cover h-[95%] w-[95%] rounded-xl" src="{{ asset('storage/' . $song->img_path) }}" alt="SongCover">
+                    <img class="relative z-10 object-cover h-[92%] md:h-[95%] w-[95%] rounded-xl" src="{{ asset('storage/' . $song->img_path) }}" alt="SongCover">
                 </div>
                 {{-- Song Info --}}
                 <div class="flex-1 min-w-0">
